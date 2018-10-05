@@ -26,6 +26,7 @@ module DeviseTokenAuth
                  :headers_names,
                  :bypass_sign_in
 
+  self.provider                             = 'email'
   self.change_headers_on_each_request       = true
   self.max_number_of_devices                = 10
   self.token_lifespan                       = 2.weeks
