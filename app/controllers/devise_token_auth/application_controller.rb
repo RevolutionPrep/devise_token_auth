@@ -76,5 +76,11 @@ module DeviseTokenAuth
       response = response.merge(data) if data
       render json: response, status: status
     end
+
+    def warden_conditions(resource)
+      p = params.permit(*params_for_resource(resource))
+      p.delete(:password)
+      p
+    end
   end
 end
