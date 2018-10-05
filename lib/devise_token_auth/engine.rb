@@ -11,7 +11,8 @@ module DeviseTokenAuth
     end
   end
 
-  mattr_accessor :change_headers_on_each_request,
+  mattr_accessor :provider,
+                 :change_headers_on_each_request,
                  :max_number_of_devices,
                  :token_lifespan,
                  :batch_request_buffer_throttle,
