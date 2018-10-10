@@ -8,11 +8,11 @@ module DeviseTokenAuth::Concerns::ResourceFinder
     # honor Devise configuration for case_insensitive keys
     q_value = resource_params[field.to_sym]
 
-    if resource_class.case_insensitive_keys.include?(field.to_sym)
+    if resource_klass.case_insensitive_keys.include?(field.to_sym)
       q_value.downcase!
     end
 
-    if resource_class.strip_whitespace_keys.include?(field.to_sym)
+    if resource_klass.strip_whitespace_keys.include?(field.to_sym)
       q_value.strip!
     end
 
@@ -20,10 +20,10 @@ module DeviseTokenAuth::Concerns::ResourceFinder
   end
 
   def find_resource(warden_conditions)
-    @resource = resource_class.find_for_database_authentication(warden_conditions)
+    @resource = resource_klass.find_for_database_authentication(warden_conditions)
   end
 
-  def resource_class(m = nil)
+  def resource_klass(m = nil)
     if m
       mapping = Devise.mappings[m]
     else

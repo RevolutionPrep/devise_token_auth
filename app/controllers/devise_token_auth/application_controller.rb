@@ -42,16 +42,6 @@ module DeviseTokenAuth
       devise_parameter_sanitizer.instance_values['permitted'][resource]
     end
 
-    def resource_class(m = nil)
-      if m
-        mapping = Devise.mappings[m]
-      else
-        mapping = Devise.mappings[resource_name] || Devise.mappings.values.first
-      end
-
-      mapping.to
-    end
-
     def json_api?
       return false unless defined?(ActiveModel::Serializer)
       return ActiveModel::Serializer.setup do |config|
@@ -61,11 +51,11 @@ module DeviseTokenAuth
     end
 
     def recoverable_enabled?
-      resource_class.devise_modules.include?(:recoverable)
+      resource_klass.devise_modules.include?(:recoverable)
     end
 
     def confirmable_enabled?
-      resource_class.devise_modules.include?(:confirmable)
+      resource_klass.devise_modules.include?(:confirmable)
     end
 
     def render_error(status, message, data = nil)
