@@ -179,7 +179,7 @@ module DeviseTokenAuth
     end
 
     def with_reset_password_token token
-      recoverable = resource_class.with_reset_password_token(token)
+      recoverable = resource_klass.with_reset_password_token(token)
 
       recoverable.reset_password_token = token if recoverable && recoverable.reset_password_token.present?
       recoverable
