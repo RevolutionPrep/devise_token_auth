@@ -35,7 +35,7 @@ PATH
   specs:
     devise_token_auth (1.0.0.rc1)
       devise (> 3.5.2, < 4.6)
-      rails (< 6)
+      rails (>= 4.2.0, < 6)
 
 GEM
   remote: https://rubygems.org/
@@ -329,4 +329,4 @@ DEPENDENCIES
   thor
 
 BUNDLED WITH
-   1.16.3
+   1.16.6
