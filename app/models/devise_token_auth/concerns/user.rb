@@ -178,7 +178,9 @@ module DeviseTokenAuth::Concerns::User
   def build_auth_header(token, client_id = 'default')
     # client may use expiry to prevent validation request if expired
     # must be cast as string or headers will break
-    expiry = tokens[client_id]['expiry'] || tokens[client_id][:expiry]
+    token_hash = tokens[client_id]
+    return {} unless token_hash.present?
+    expiry = token_hash['expiry'] || token_hash[:expiry]
 
     {
       DeviseTokenAuth.headers_names[:"access-token"] => token,
